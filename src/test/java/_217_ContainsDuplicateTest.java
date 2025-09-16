@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ContainsDuplicateTest {
-    private ContainsDuplicate sut = new ContainsDuplicate();
+class _217_ContainsDuplicateTest {
+    private _217_ContainsDuplicate sut = new _217_ContainsDuplicate();
 
     @DisplayName("Contains Duplicates")
     @ParameterizedTest(name = "{0} constains duplicate: {1}" )

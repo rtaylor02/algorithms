@@ -29,7 +29,7 @@ Constraints:
 0 <= prices[i] <= 104
  */
 
-public class BestTimeToBuyAndSellStock {
+public class _121_BestTimeToBuyAndSellStock {
     // Technically, based on the price, we need to buy low and sell high.
     // NOTE: you can only sell after you bought.
     public int maxProfit(int[] prices) {

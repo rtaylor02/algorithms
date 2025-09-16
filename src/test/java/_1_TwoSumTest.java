@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-class TwoSumTest {
-    private final TwoSum sut = new TwoSum();
+class _1_TwoSumTest {
+    private final _1_TwoSum sut = new _1_TwoSum();
 
     private static Stream<Arguments> argsSource_findTwoSums() {
         return Stream.of(

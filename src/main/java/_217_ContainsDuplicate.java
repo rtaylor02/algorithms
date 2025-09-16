@@ -27,7 +27,7 @@ Constraints:
 import java.util.HashSet;
 import java.util.Set;
 
-public class ContainsDuplicate {
+public class _217_ContainsDuplicate {
     public boolean containsDuplicate(int[] array) {
         Set<Integer> set = new HashSet<>();
         for (int i : array) {
