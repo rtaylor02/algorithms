@@ -41,17 +41,19 @@ public class _169_MajorityElement {
 
     // Better solution with space complexity of O(1); time complexity O(n)
     public int majorityElement2(int[] nums) {
-        int res = 0;
         int majority = 0;
+        int frequencyOfMajority = 0;
 
         for (int n : nums) {
-            if (majority == 0) {
-                res = n;
+            // Update only when there is no majority
+            if (frequencyOfMajority == 0) {
+                majority = n;
             }
 
-            majority += n == res ? 1 : -1;
+            // Remember priority of execution: equality (==), ternary (?:), assignment (+=)
+            frequencyOfMajority += n == majority ? 1 : -1;
         }
 
-        return res;
+        return majority;
     }
 }
