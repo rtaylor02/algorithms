@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 /*
 The implementation of stack using ArrayList
@@ -55,5 +54,28 @@ public class StackWithArrayList {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.pop());
+    }
+}
+
+class StringReverser {
+    private StackWithArrayList.Stack<Character> stack = new StackWithArrayList.Stack<>();
+
+    public String reverseString(String stringToReverse) {
+        for (char c : stringToReverse.toCharArray()) {
+            stack.push(c);
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while (!stack.isEmpty()) {
+            stringBuilder.append(stack.pop());
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public static void main(String[] args) {
+        StringReverser stringReverser = new StringReverser();
+        System.out.println(stringReverser.reverseString("Hello"));
     }
 }
