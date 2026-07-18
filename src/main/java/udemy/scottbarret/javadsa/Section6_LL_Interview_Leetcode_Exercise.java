@@ -15,6 +15,13 @@ public class Section6_LL_Interview_Leetcode_Exercise {
             this.tail = newNode;
         }
 
+        public LinkedList(int... values) {
+            this(values[0]);
+            for (int i = 1; i < values.length; i++) {
+                this.append(values[i]);
+            }
+        }
+
         public Node getHead() {
             return head;
         }
@@ -115,6 +122,21 @@ public class Section6_LL_Interview_Leetcode_Exercise {
             }
 
             return slowPointer;
+        }
+
+        public void removeDuplicates() {
+            Node current = head;
+            while (current != null) {
+                Node runner = current;
+                while (runner.next != null) {
+                    if (runner.next.value == current.value) {
+                        runner.next = runner.next.next;
+                    } else {
+                        runner = runner.next;
+                    }
+                }
+                current = current.next;
+            }
         }
 
         public static class Node {

@@ -43,6 +43,8 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
     @ParameterizedTest
     @MethodSource("argSource_createList")
     void testFindMiddleNode(int totalMembersOfLinkedList, int expected) {
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList sst = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1,2,3);
+
         // ARRANGE
         Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = createList(totalMembersOfLinkedList, false);
 
@@ -62,12 +64,11 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
     }
 
     private static Section6_LL_Interview_Leetcode_Exercise.LinkedList createList(int totalMembers, boolean cyclic) {
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList list = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1);
-        if (totalMembers >= 0) {
-            for (int i = 1; i < totalMembers; i++) {
-                list.append(i + 1); // The first Node was initialised with 1, so the next nodes should be 2, 3, 4, ...
-            }
+        int[] values = new int[totalMembers];
+        for (int i = 1; i <= totalMembers; i++) {
+            values[i - 1] = i;
         }
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList list = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(values);
 
         if (cyclic) {
             list.getTail().setNext(list.getHead());
@@ -128,6 +129,26 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
         );
     }
 
+    @ParameterizedTest(name = "{1} ==> {0}")
+    @MethodSource("argSource_removeDuplicates")
+    void testRemoveDuplicates(List<Integer> expected, int... values) {
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(values);
+
+        sut.removeDuplicates();
+
+        assertIterableEquals(expected, sut.asList());
+    }
+
+    private static Stream<Arguments> argSource_removeDuplicates() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3, 4, 5), new int[]{1, 2, 3, 1, 4, 2, 5}), // Duplicates at several places
+                Arguments.of(List.of(1, 2, 3, 4), new int[]{1, 2, 3, 4, 1}), // Start & end duplicates
+                Arguments.of(List.of(1, 2, 3, 4, 5), new int[]{1, 2, 3, 3, 4, 5}), // Middle duplicates
+                Arguments.of(List.of(1, 2, 3, 4, 5), new int[]{1, 2, 3, 4, 5}), // No duplicates
+                Arguments.of(List.of(1), new int[]{1}), // Single node
+                Arguments.of(List.of(1), new int[]{1, 1, 1}) // All duplicates
+        );
+    }
 
 
 }
