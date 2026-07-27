@@ -1,3 +1,5 @@
+package leetcode;
+
 import java.util.HashMap;
 
 /*
@@ -20,18 +22,45 @@ s and t consist of lowercase English letters.
  */
 public class _242_ValidAnagram {
 
+    public boolean isValidAnagram3(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        var map = new HashMap<Character, Integer>(s1.length());
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            map.put(s1.charAt(i), map.getOrDefault(s1.charAt(i), 0) + 1);
+        }
+
+        for (int j = 0; j < s2.length(); j++) {
+            if (!map.containsKey(s2.charAt(j))) {
+                return false;
+            }
+            map.put(s2.charAt(j), map.getOrDefault(s2.charAt(j), 0) - 1);
+            if (map.get(s2.charAt(j)) < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isValidAnagram2(String word1, String word2) {
         if (word1.length() != word2.length()) {
             return false;
-        } else {
-            int count1 = 0;
-            int count2 = 0;
-            for (int i = 0; i < word1.length(); i++) {
-                count1 = count1 + word1.charAt(i);
-                count2 = count2 + word2.charAt(i);
-            }
-            return count2 == count1;
         }
+
+        int[] alphabetCount = new int[26];
+        for (int i = 0; i < word1.length(); i++) {
+            alphabetCount[word1.charAt(i) - 'a']++;
+            alphabetCount[word2.charAt(i) - 'a']--;
+        }
+        for (int j : alphabetCount) {
+            if (j != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isValidAnagram(String word1, String word2) {

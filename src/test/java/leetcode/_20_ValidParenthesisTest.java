@@ -1,3 +1,5 @@
+package leetcode;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,7 +14,7 @@ public class _20_ValidParenthesisTest {
     @CsvSource({"(), true", "()[]{}, true", "(], false", "([]), true", "([)], false", "()], false"})
     void testIsValid(String s, boolean expected) {
         // ARRANGE - ACT
-        boolean actual = sut.isValid2(s);
+        boolean actual = sut.isValid3(s);
 
         // ASSERT
         assertEquals(expected, actual);

@@ -1,7 +1,8 @@
+package leetcode;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -31,6 +32,4 @@ public class _169_MajorityElementTest {
                 Arguments.of(new int[]{2, 4, 4}, 4)
         );
     }
-
-
 }

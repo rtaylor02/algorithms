@@ -1,3 +1,5 @@
+package leetcode;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,10 +11,10 @@ public class _242_ValidAnagramTest {
 
     @DisplayName("Valid Anagrams")
     @ParameterizedTest(name = "{0} and {1} are anagrams: {2}")
-    @CsvSource({"anagram, nagaram, true", "rat, car, false", "grab, brag, true", "mug, guns, false"})
+    @CsvSource({"anagram, nagaram, true", "rat, car, false", "grab, brag, true", "mug, guns, false", "ggii, eekk, false"})
     void testIsAnagram(String word1, String word2, boolean expected) {
         // ARRANGE - ACT
-        boolean actual = sut.isValidAnagram(word1, word2);
+        boolean actual = sut.isValidAnagram2(word1, word2);
 
         // ASSERT
         assertEquals(expected, actual);

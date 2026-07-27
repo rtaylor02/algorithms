@@ -1,3 +1,5 @@
+package leetcode;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,6 +17,7 @@ class _1_TwoSumTest {
         return Stream.of(
                 Arguments.of(new int[]{2, 7, 11, 15}, 9, new int[]{0, 1}),
                 Arguments.of(new int[]{3, 2, 4}, 6, new int[]{1, 2}),
+                Arguments.of(new int[]{3, 1, 7, 9, 4}, 6, new int[]{}),
                 Arguments.of(new int[]{3, 3}, 6, new int[]{0, 1})
         );
     }
@@ -25,6 +28,7 @@ class _1_TwoSumTest {
     void testCases(int[] nums, int target, int[] expected) {
         // ARRANGE - ACT
         int[] result = sut.twoSum(nums, target);
+        // Sort both result and expected arrays so they can be compared
         Arrays.sort(result);
         Arrays.sort(expected);
 

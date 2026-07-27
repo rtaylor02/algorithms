@@ -1,4 +1,4 @@
-
+package leetcode;
 /*
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
@@ -33,6 +33,7 @@ Constraints:
 s consists of parentheses only '()[]{}'.
  */
 
+import java.util.HashMap;
 import java.util.Stack;
 
 public class _20_ValidParenthesis {
@@ -73,5 +74,30 @@ public class _20_ValidParenthesis {
             }
         }
         return stack.empty();
+    }
+
+    public boolean isValid3(String s) {
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('[', ']');
+        map.put('{', '}');
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    char popped = stack.pop();
+                    if (map.get(popped) != c) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-/*
+package leetcode;/*
 Source: LeetCode problem #121
 ==============================
 
