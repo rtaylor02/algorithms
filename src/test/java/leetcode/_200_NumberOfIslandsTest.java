@@ -28,23 +28,29 @@ public class _200_NumberOfIslandsTest {
                                 {'0', '0', '0', '1', '1'}}, 3),
                 Arguments.of(
                         new char[][]{
+                                {'1', '0', '0', '0', '1'},
+                                {'0', '0', '0', '0', '0'},
+                                {'0', '0', '0', '0', '0'},
+                                {'1', '0', '0', '0', '1'}}, 4), // Edge case: islands on edges only
+                Arguments.of(
+                        new char[][]{
                                 {'0', '0', '0', '0', '0'},
                                 {'0', '0', '0', '0', '0'},
                                 {'0', '0', '0', '0', '0'},
-                                {'0', '0', '0', '0', '0'}}, 0),
+                                {'0', '0', '0', '0', '0'}}, 0), // Edge case: no islands
                 Arguments.of(
                         new char[][]{
                                 {'1', '1', '1', '1', '1'},
                                 {'1', '1', '1', '1', '1'},
                                 {'1', '1', '1', '1', '1'},
-                                {'1', '1', '1', '1', '1'}}, 1)
+                                {'1', '1', '1', '1', '1'}}, 1) // Edge case: all is an island
         );
     }
 
     @DisplayName("Number of Islands")
     @ParameterizedTest(name = "Number of islands: {1}")
     @MethodSource("testData")
-    void testIsValid(char[][] grid, int expectedTotalIsland) {
+    void calculateNumberOfIslandsTest(char[][] grid, int expectedTotalIsland) {
         // ARRANGE - ACT
         int actual = sut.calculateNumberOfIslands(grid);
 
