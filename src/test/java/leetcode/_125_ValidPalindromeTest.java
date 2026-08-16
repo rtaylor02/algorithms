@@ -2,11 +2,28 @@ package leetcode;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class _125_ValidPalindromeTest {
     private _125_ValidPalindrome sut = new _125_ValidPalindrome();
+
+    @DisplayName("Testing A palindrome")
+    @ParameterizedTest(name = "{0} is palindrome: {1}")
+    @CsvSource(delimiter = '|', textBlock = """
+        A man, a plan, a canal: Panama | true
+        race a car | false
+        21_manam_12 | true
+        """)
+    void isPalindromeTest(String s, boolean expected) {
+        // ARRANGE - ACT
+        boolean actual = sut.isPalindrome(s);
+
+        // ASSERT
+        assertEquals(expected, actual);
+    }
 
     @DisplayName("Testing A palindrome")
     @Test
