@@ -1,7 +1,5 @@
 package udemy.scottbarret.javadsa;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,44 +9,13 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Section6_LL_Interview_Leetcode_ExerciseTest {
-    @Test
-    @DisplayName("Appending linked list from non-empty list")
-    void testAppend() {
-        // ARRANGE - ACT
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1);
-        sut.append(2);
-        List<Integer> actual = sut.asList();
-
-        // ASSERT
-        assertIterableEquals(List.of(1, 2), actual);
-    }
-
-    @Test
-    @DisplayName("Appending linked list from empty list")
-    void testAppendFromEmptyLinkedList() {
-        // ARRANGE
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1);
-        sut.makeEmpty();
-
-        // ACT
-        sut.append(100);
-        List<Integer> actual = sut.asList();
-
-        // ASSERT
-        assertIterableEquals(List.of(100), actual);
-    }
-
+class Section6_LL_Interview_Leetcode_Exercise_Test {
 
     @ParameterizedTest
     @MethodSource("argSource_createList")
-    void testFindMiddleNode(int totalMembersOfLinkedList, int expected) {
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sst = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1,2,3);
-
-        // ARRANGE
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = createList(totalMembersOfLinkedList, false);
-
-        // ACT
+    //@CsvSource({"7, 4", "4, 3"})
+    void testFindMiddleNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int expected) {
+        // ARRANGE - ACT
         Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node middleNode = sut.findMiddleNode();
         int middleNodeValue = middleNode.getValue();
 
@@ -58,8 +25,8 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
 
     private static Stream<Arguments> argSource_createList() {
         return Stream.of(
-                Arguments.of(7, 4),
-                Arguments.of(4, 3)
+                Arguments.of(createList(7, false), 4),
+                Arguments.of(createList(4, false), 3)
         );
     }
 
@@ -79,9 +46,9 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
 
     @ParameterizedTest
     @MethodSource("argSource_hasLoop")
-    void testHasLoop(Section6_LL_Interview_Leetcode_Exercise.LinkedList list, boolean expected) {
+    void testHasLoop(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, boolean expected) {
         // ACT
-        boolean actual = list.hasLoop();
+        boolean actual = sut.hasLoop();
 
         // ASSERT
         assertEquals(expected, actual);
@@ -96,9 +63,9 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
 
     @ParameterizedTest
     @MethodSource("argSource_findKthNode")
-    void testFindKthNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList list, int k, int expected) {
+    void testFindKthNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int k, int expected) {
         // ARRANGE - ACT
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node kthNode = list.findKthNode(k);
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node kthNode = sut.findKthNode(k);
         int actual = kthNode.getValue();
 
         // ASSERT
@@ -114,9 +81,9 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
 
     @ParameterizedTest
     @MethodSource("argSource_findKthNode_whenInputIsZeroOrOutOfRange")
-    void testFindKthNode_whenInputIsZeroOrOutOfRange(Section6_LL_Interview_Leetcode_Exercise.LinkedList list, int k, Object expected) {
+    void testFindKthNode_whenInputIsZeroOrOutOfRange(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int k, Object expected) {
         // ARRANGE - ACT
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node kthNode = list.findKthNode(k);
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node kthNode = sut.findKthNode(k);
 
         // ASSERT
         assertEquals(expected, kthNode);
@@ -132,10 +99,13 @@ class Section6_LL_Interview_Leetcode_ExerciseTest {
     @ParameterizedTest(name = "{1} ==> {0}")
     @MethodSource("argSource_removeDuplicates")
     void testRemoveDuplicates(List<Integer> expected, int... values) {
+        // ARRANGE
         Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(values);
 
+        // ACT
         sut.removeDuplicates();
 
+        // ASSERT
         assertIterableEquals(expected, sut.asList());
     }
 
