@@ -1,5 +1,6 @@
 package udemy.scottbarret.javadsa;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,7 +11,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Section6_LL_Interview_Leetcode_Exercise_Test {
-
+    @DisplayName("Find middle node")
     @ParameterizedTest
     @MethodSource("argSource_createList")
     //@CsvSource({"7, 4", "4, 3"})
@@ -61,6 +62,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         );
     }
 
+    @DisplayName("Find Kth Node")
     @ParameterizedTest
     @MethodSource("argSource_findKthNode")
     void testFindKthNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int k, int expected) {
@@ -79,6 +81,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         );
     }
 
+    @DisplayName("Find Kth Node")
     @ParameterizedTest
     @MethodSource("argSource_findKthNode_whenInputIsZeroOrOutOfRange")
     void testFindKthNode_whenInputIsZeroOrOutOfRange(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int k, Object expected) {
@@ -96,6 +99,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         );
     }
 
+    @DisplayName("Remove duplicates")
     @ParameterizedTest(name = "{1} ==> {0}")
     @MethodSource("argSource_removeDuplicates")
     void testRemoveDuplicates(List<Integer> expected, int... values) {
@@ -119,6 +123,4 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
                 Arguments.of(List.of(1), new int[]{1, 1, 1}) // All duplicates
         );
     }
-
-
 }
