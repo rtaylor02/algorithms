@@ -139,6 +139,14 @@ public class Section5_LinkedList_Coding_Exercises {
             }
         }
 
+        public int binaryToDecimal() {
+            Node current = head;
+            while (current != null) {
+
+            }
+            return 0;
+        }
+
         public static class Node {
             private Node next;
             private int value;

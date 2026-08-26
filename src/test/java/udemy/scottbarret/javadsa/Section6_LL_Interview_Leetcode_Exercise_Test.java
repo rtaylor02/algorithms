@@ -3,6 +3,7 @@ package udemy.scottbarret.javadsa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
@@ -122,5 +123,35 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
                 Arguments.of(List.of(1), new int[]{1}), // Single node
                 Arguments.of(List.of(1), new int[]{1, 1, 1}) // All duplicates
         );
+    }
+
+    @DisplayName("Binary to Decimal")
+    @ParameterizedTest(name = "{0} ==> {1}")
+    @MethodSource("argSource_binaryLinkedList")
+    void testBinaryToDecimal(Section5_LinkedList_Coding_Exercises.LinkedList sut, int expected) {
+        // ARRANGE - ACT - ASSERT
+        assertEquals(expected, sut.binaryToDecimal());
+    }
+
+    private static Stream<Arguments> argSource_binaryLinkedList() {
+        return Stream.of(
+                Arguments.of(createBinaryLinkedList("111"), 7),
+                Arguments.of(createBinaryLinkedList("000"), 0),
+                Arguments.of(createBinaryLinkedList("1000"), 8)
+        );
+    }
+
+    private static Section5_LinkedList_Coding_Exercises.LinkedList createBinaryLinkedList(String binaryNumberInString) {
+        Section5_LinkedList_Coding_Exercises.LinkedList linkedList = null;
+
+        for (int i = 0; i < binaryNumberInString.length(); i++) {
+            if (linkedList == null) {
+                linkedList = new Section5_LinkedList_Coding_Exercises.LinkedList(binaryNumberInString.charAt(i) - '0');
+            } else {
+                linkedList.append(binaryNumberInString.charAt(i) - '0');
+            }
+        }
+
+        return linkedList;
     }
 }
