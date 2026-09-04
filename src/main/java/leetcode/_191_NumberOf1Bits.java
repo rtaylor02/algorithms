@@ -25,10 +25,15 @@ public class _191_NumberOf1Bits {
         int total1Bits = 0;
 
         // n & 1 ==> determines if the least significant digit is 1.
-        // If so, we have detected bit 1. We need to keep shifting left to check all bits until n = 0.
+        // If so, we have detected bit 1. We need to keep (unsigned) shifting left to check all bits until n = 0.
+        // NOTE:
+        // >> signed shift left, i.e. result can be negative,
+        // e.g. -12 >> 2 = -3
+        // >>> unsigned shift left, i.e. result will always be positive,
+        // e.g. -12 >>> 2 = 1073741821
         while (n > 0) {
             total1Bits = ((n & 1) == 1) ? total1Bits + 1 : total1Bits;
-            n >>= 1;
+            n >>>= 1;
         }
 
         return total1Bits;

@@ -35,7 +35,7 @@ public class _191_NumberOf1BitsTest {
     @CsvSource({"11, 3", "128, 1", "2147483645, 30", "157, 5"})
     void testHammingWeight(int n, int expected) {
         // ARRANGE - ACT
-        int actual = sut.hammingWeight(n);
+        int actual = sut.hammingWeight2(n);
 
         // ASSERT
         assertEquals(expected, actual);
