@@ -26,7 +26,7 @@ public class _371_SumOfTwoIntegersTest {
     @DisplayName("Sum of 2 Integers")
     @ParameterizedTest(name = "Sum of {0} and {1} = {2}")
     @CsvSource({"2, 3, 5", "3, 6, 9"})
-    void testHammingWeight(int a, int b, int expected) {
+    void testGetSum(int a, int b, int expected) {
         // ARRANGE - ACT
         int actual = sut.getSum(a, b);
 
