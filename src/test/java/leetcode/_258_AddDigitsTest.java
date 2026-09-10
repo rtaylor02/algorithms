@@ -22,7 +22,7 @@ Input: num = 0
 Output: 0
 
 Constraints:
-0 <= num <= 231 - 1
+0 <= num <= 2^(31 - 1)
  */
 
 public class _258_AddDigitsTest {
