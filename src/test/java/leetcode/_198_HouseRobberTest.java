@@ -45,7 +45,7 @@ class _198_HouseRobberTest {
     @MethodSource("testData")
     void testRob(int[] nums, int expected) {
         // ARRANGE - ACT
-        int result = sut.rob(nums);
+        int result = sut.rob2(nums);
 
         // ASSERT
         assertEquals(expected, result);

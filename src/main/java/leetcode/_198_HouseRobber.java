@@ -14,4 +14,20 @@ public class _198_HouseRobber {
         }
         return maxRob[maxRob.length - 1];
     }
+
+    public int rob2(int[] nums) {
+        if (nums.length <= 1) {
+            return nums[0];
+        }
+
+        int max1 = nums[0];
+        int max2 = Math.max(max1, nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            int currentMax = Math.max(max1 + nums[i], max2);
+            max1 = max2;
+            max2 = currentMax;
+        }
+
+        return max2;
+    }
 }
