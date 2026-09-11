@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -35,12 +34,14 @@ class _198_HouseRobberTest {
         return Stream.of(
                 Arguments.of(new int[]{1, 2, 3, 1}, 4),
                 Arguments.of(new int[]{2, 1, 1, 2}, 4),
+                Arguments.of(new int[]{3, 6, 2, 1, 5, 1, 2, 9}, 20),
+                Arguments.of(new int[]{0}, 0),
                 Arguments.of(new int[]{2, 7, 9, 3, 1}, 12)
         );
     }
 
-    @DisplayName("Testing scenarios")
-    @ParameterizedTest(name = "Target of {1} from {0}: {2}")
+    @DisplayName("House Robber")
+    @ParameterizedTest(name = "Max rob from {0}: {1}")
     @MethodSource("testData")
     void testRob(int[] nums, int expected) {
         // ARRANGE - ACT
