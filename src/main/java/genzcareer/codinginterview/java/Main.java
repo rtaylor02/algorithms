@@ -1,5 +1,7 @@
 package genzcareer.codinginterview.java;
 
+import java.util.HashMap;
+
 public class Main {
     static class Q1 {
         public String reverseString(String input) {
@@ -26,6 +28,18 @@ public class Main {
             b = a - b;
             a = a - b;
             System.out.printf("After swapping: a = %d, b = %d%n", a, b);
+        }
+    }
+
+    static class Q3 {
+        public HashMap<String, Integer> countWords(String input) {
+            HashMap<String, Integer> wordCounts = new HashMap<>();
+            String[] words = input.split("\\s");
+            for (String word : words) {
+                wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+            }
+
+            return wordCounts;
         }
     }
 }

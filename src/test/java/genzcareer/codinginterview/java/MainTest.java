@@ -3,8 +3,14 @@ package genzcareer.codinginterview.java;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("All tests in GenZ Career interview prep: Common Step - Java Coding")
@@ -43,5 +49,33 @@ class MainTest {
             assertEquals(b, a_);
         }
     }
+
+    @DisplayName("Q3:")
+    @Nested
+    class Q3 {
+        private Main.Q3 sut = new Main.Q3();
+
+        @DisplayName("Write a Java Program to count the number of words in a string using HashMap.")
+        @ParameterizedTest(name = "Word counts: {1}")
+        @MethodSource("testData")
+        void testCountWords(String input, Map<String, Integer> expected) {
+            // ARRANGE - ACT
+            Map<String, Integer> actual = sut.countWords(input);
+
+            // ASSERT
+            assertEquals(expected, actual);
+        }
+
+        private static Stream<Arguments> testData() {
+            return Stream.of(
+                    Arguments.of("Hello there", Map.of("Hello", 1, "there", 1)),
+                    Arguments.of("you you you", Map.of("you", 3)),
+                    Arguments.of("", Map.of("", 1)),
+                    Arguments.of("How are you?", Map.of("How", 1, "are", 1, "you?", 1))
+            );
+        }
+    }
+
+
 
 }
