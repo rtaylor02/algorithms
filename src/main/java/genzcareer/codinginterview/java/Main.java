@@ -17,4 +17,15 @@ public class Main {
         }
     }
 
+    static class Q2 {
+
+        public void swapNumbers(int a, int b) {
+            System.out.println("*********************************");
+            System.out.printf("Before swapping: a = %d, b = %d%n", a, b);
+            a = a + b;
+            b = a - b;
+            a = a - b;
+            System.out.printf("After swapping: a = %d, b = %d%n", a, b);
+        }
+    }
 }
