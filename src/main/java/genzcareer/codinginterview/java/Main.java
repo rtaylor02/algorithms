@@ -1,6 +1,8 @@
 package genzcareer.codinginterview.java;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Main {
     static class Q1 {
@@ -40,6 +42,42 @@ public class Main {
             }
 
             return wordCounts;
+        }
+    }
+
+    static class Q4 {
+        public void iterateHashMap(Map<String, String> map) {
+            System.out.println("**************************");
+
+            // Using while loop
+            Iterator<String> keyIterator = map.keySet().iterator();
+            while (keyIterator.hasNext()) {
+                String key = keyIterator.next();
+                String value = map.get(key);
+                System.out.println("Key: " + key + " - Value: " + value);
+            }
+
+            System.out.println("---------------------------");
+
+            Iterator<Map.Entry<String, String>> entryIterator = map.entrySet().iterator();
+            while (entryIterator.hasNext()) {
+                Map.Entry<String, String> next = entryIterator.next();
+                System.out.println("Key: " + next.getKey() + " - Value: " + next.getValue());
+            }
+
+            System.out.println("==========================");
+
+            // Using advanced for-loop
+            for (String key : map.keySet()) {
+                String value = map.get(key);
+                System.out.println("Key: " + key + " - Value: " + value);
+            }
+
+            System.out.println("---------------------------");
+
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                System.out.println("Key: " + entry.getKey() + " - Value: " + entry.getValue());
+            }
         }
     }
 }

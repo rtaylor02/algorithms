@@ -2,6 +2,7 @@ package genzcareer.codinginterview.java;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -72,6 +73,30 @@ class MainTest {
                     Arguments.of("you you you", Map.of("you", 3)),
                     Arguments.of("", Map.of("", 1)),
                     Arguments.of("How are you?", Map.of("How", 1, "are", 1, "you?", 1))
+            );
+        }
+    }
+
+    @DisplayName("Q4:")
+    @Nested
+    class Q4 {
+        private Main.Q4 sut = new Main.Q4();
+
+        //@DisplayName("Write a Java Program to iterate HashMap using While and advance for loop.")
+        @ParameterizedTest(name = "{0}")
+        @MethodSource("testData")
+        void testIterateHashMap(Map<String, String> map) {
+            // ARRANGE - ACT
+            sut.iterateHashMap(map);
+
+            // ASSERT - No assertion needed
+        }
+
+
+        private static Stream<Arguments> testData() {
+            return Stream.of(
+                    Arguments.of(Map.of("1", "Hello", "2", "World")),
+                    Arguments.of(Map.of("1", "One", "2", "Two"))
             );
         }
     }
