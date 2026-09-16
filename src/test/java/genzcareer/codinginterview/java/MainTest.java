@@ -9,14 +9,15 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("All tests in GenZ Career interview prep: Common Step - Java Coding")
 class MainTest {
-    @DisplayName("Q1")
+    @DisplayName("Q1: Write a Java Program to reverse a string without using String inbuilt\n" +
+            "function.")
     @Nested
     class Q1 {
         private Main.Q1 sut = new Main.Q1();
 
         @DisplayName("Reverse a String without String.reverse()")
         @ParameterizedTest(name = "{0} ==> {1}")
-        @CsvSource({"abc, cba"})
+        @CsvSource({"abc, cba", "thisNOTthat, tahtTONsiht"})
         void testReverseString(String input, String expected) {
             String actual = sut.reverseString(input);
 
