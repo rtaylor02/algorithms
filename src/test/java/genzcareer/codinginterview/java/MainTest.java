@@ -82,7 +82,7 @@ class MainTest {
     class Q4 {
         private Main.Q4 sut = new Main.Q4();
 
-        //@DisplayName("Write a Java Program to iterate HashMap using While and advance for loop.")
+        @DisplayName("Write a Java Program to iterate HashMap using While and advance for loop.")
         @ParameterizedTest(name = "{0}")
         @MethodSource("testData")
         void testIterateHashMap(Map<String, String> map) {
@@ -100,6 +100,24 @@ class MainTest {
             );
         }
     }
+
+    @DisplayName("Q5:")
+    @Nested
+    class Q5 {
+        private Main.Q5 sut = new Main.Q5();
+
+        @DisplayName("Write a Java Program to find whether a number is prime or not in the most efficient way?")
+        @ParameterizedTest(name = "{0} is prime number: {1}")
+        @CsvSource({"1, false", "3, true", "10, false", "13, true", "44, false", "41, true"})
+        void testIsPrime(int num, boolean expected) {
+            // ARRANGE - ACT
+            boolean actual = sut.isPrime(num);
+
+            // ASSERT
+            assertEquals(expected, actual);
+        }
+    }
+
 
 
 
