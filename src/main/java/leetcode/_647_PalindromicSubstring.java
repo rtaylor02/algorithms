@@ -5,6 +5,10 @@ public class _647_PalindromicSubstring {
         int count = 0;
         boolean[][] dp = new boolean[s.length()][s.length()]; // Storing previously calculated indices
 
+        /*
+        We are using Dynamic Programming  - Tabulation (Bottom-up Approach), that is we memoise
+        base case for 1 and 2 characters first. Then 3 characters are using the memoised result
+         */
         // Base case 1: single character palindrome - all are palindrome
         for (int i = 0; i < s.length(); i++) {
             dp[i][i] = true;
@@ -20,6 +24,7 @@ public class _647_PalindromicSubstring {
         }
 
         // Substrings with > 2 characters
+        // Iterate from start index to the end of index containing certain length of substring
         for (int substringLength = 3; substringLength <= s.length(); substringLength++) {
             for (int startIndex = 0; startIndex + substringLength <= s.length(); startIndex++) {
                 int endIndex = startIndex + substringLength - 1;
