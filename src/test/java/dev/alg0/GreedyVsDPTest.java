@@ -20,11 +20,11 @@ public class GreedyVsDPTest {
             Arrays.fill(dp, Integer.MAX_VALUE / 2);
             Arrays.fill(used, -1);
             dp[0] = 0;
-            for (int i = 1; i <= amount; i++) {
+            for (int subAmount = 1; subAmount <= amount; subAmount++) {
                 for (int coin : coins) {
-                    if (coin <= i && dp[i - coin] + 1 < dp[i]) {
-                        dp[i] = dp[i - coin] + 1;  // result = [4, 4], totalCoins = 2, optimal = true
-                        used[i] = coin;
+                    if (coin <= subAmount && dp[subAmount - coin] + 1 < dp[subAmount]) {
+                        dp[subAmount] = dp[subAmount - coin] + 1;  // result = [4, 4], totalCoins = 2, optimal = true
+                        used[subAmount] = coin;
                     }
                 }
             }
