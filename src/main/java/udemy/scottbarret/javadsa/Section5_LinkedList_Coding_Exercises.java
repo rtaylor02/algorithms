@@ -97,10 +97,14 @@ public class Section5_LinkedList_Coding_Exercises {
             return slowPointer; // Middle node
         }
 
+        /*
+        length = k + (length - k)
+        We don't know the length, but we know when we reach the end, i.e. when node.next = null.
+        Thus, by traversing k time with fastPointer, slowPointer will traverse only by (length - k) before fastPointer reaches the end.
+         */
         public Node findKthNode(int k) {
             Node slowPointer = head;
             Node fastPointer = head;
-            int tracker = 0;
 
             if (k <= 0) {
                 return null;
@@ -116,9 +120,6 @@ public class Section5_LinkedList_Coding_Exercises {
             while (fastPointer != null) {
                 slowPointer = slowPointer.next;
                 fastPointer = fastPointer.next;
-                if (fastPointer == null) {
-
-                }
             }
 
             return slowPointer;

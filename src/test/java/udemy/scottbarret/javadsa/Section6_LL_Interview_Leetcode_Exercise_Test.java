@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -67,9 +68,11 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
     @ParameterizedTest
     @MethodSource("argSource_findKthNode")
     void testFindKthNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int k, int expected) {
-        // ARRANGE - ACT
+        // ARRANGE
         Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node kthNode = sut.findKthNode(k);
-        int actual = kthNode.getValue();
+
+        // ACT
+        int actual = kthNode != null ? kthNode.getValue() : Integer.MIN_VALUE; // Integer.MIN_VALUE is used as a 'null' flag
 
         // ASSERT
         assertEquals(expected, actual);
@@ -78,7 +81,10 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
     private static Stream<Arguments> argSource_findKthNode() {
         return Stream.of(
                 Arguments.of(createList(5, false), 3, 3),
-                Arguments.of(createList(6, false), 2, 5)
+                Arguments.of(createList(5, false), 5, 1),
+                Arguments.of(createList(5, false), 6, Integer.MIN_VALUE),
+                Arguments.of(createList(6, false), 2, 5),
+                Arguments.of(createList(6, false), 0, Integer.MIN_VALUE)
         );
     }
 
