@@ -3,11 +3,9 @@ package udemy.scottbarret.javadsa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Section6_LL_Interview_Leetcode_Exercise_Test {
     @DisplayName("Find middle node")
     @ParameterizedTest
-    @MethodSource("argSource_createList")
+    @MethodSource("argSource_findMiddleNode")
     //@CsvSource({"7, 4", "4, 3"})
     void testFindMiddleNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int expected) {
         // ARRANGE - ACT
@@ -26,7 +24,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         assertEquals(expected, middleNodeValue);
     }
 
-    private static Stream<Arguments> argSource_createList() {
+    private static Stream<Arguments> argSource_findMiddleNode() {
         return Stream.of(
                 Arguments.of(createList(7, false), 4),
                 Arguments.of(createList(4, false), 3)

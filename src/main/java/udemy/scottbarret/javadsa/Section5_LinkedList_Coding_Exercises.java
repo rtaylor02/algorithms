@@ -100,29 +100,29 @@ public class Section5_LinkedList_Coding_Exercises {
         /*
         length = k + (length - k)
         We don't know the length, but we know when we reach the end, i.e. when node.next = null.
-        Thus, by traversing k time with fastPointer, slowPointer will traverse only by (length - k) before fastPointer reaches the end.
+        Thus, by traversing k time with firstPointer, secondPointer will traverse only by (length - k) before firstPointer reaches the end.
          */
         public Node findKthNode(int k) {
-            Node slowPointer = head;
-            Node fastPointer = head;
+            Node firstPointer = head;
+            Node secondPointer = head;
 
             if (k <= 0) {
                 return null;
             }
 
             for (int i = 0; i < k; i++) {
-                if (fastPointer == null) {
+                if (firstPointer == null) {
                     return null;
                 }
-                fastPointer = fastPointer.next;
+                firstPointer = firstPointer.next;
             }
 
-            while (fastPointer != null) {
-                slowPointer = slowPointer.next;
-                fastPointer = fastPointer.next;
+            while (firstPointer != null) {
+                secondPointer = secondPointer.next;
+                firstPointer = firstPointer.next;
             }
 
-            return slowPointer;
+            return secondPointer;
         }
 
         public void removeDuplicates() {
