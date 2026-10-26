@@ -124,6 +124,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
                 Arguments.of(List.of(1, 2, 3, 4), new int[]{1, 2, 3, 4, 1}), // Start & end duplicates
                 Arguments.of(List.of(1, 2, 3, 4, 5), new int[]{1, 2, 3, 3, 4, 5}), // Middle duplicates
                 Arguments.of(List.of(1, 2, 3, 4, 5), new int[]{1, 2, 3, 4, 5}), // No duplicates
+                Arguments.of(List.of(1), new int[]{1, 1}), // Double node
                 Arguments.of(List.of(1), new int[]{1}), // Single node
                 Arguments.of(List.of(1), new int[]{1, 1, 1}) // All duplicates
         );
