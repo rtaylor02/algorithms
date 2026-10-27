@@ -140,6 +140,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
 
     private static Stream<Arguments> argSource_binaryLinkedList() {
         return Stream.of(
+                Arguments.of(createBinaryLinkedList("100"), 4),
                 Arguments.of(createBinaryLinkedList("111"), 7),
                 Arguments.of(createBinaryLinkedList("000"), 0),
                 Arguments.of(createBinaryLinkedList("1000"), 8)

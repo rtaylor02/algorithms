@@ -142,10 +142,14 @@ public class Section5_LinkedList_Coding_Exercises {
 
         public int binaryToDecimal() {
             Node current = head;
+            int total = 0;
             while (current != null) {
+                total = total * 2 + current.value;
 
+                current = current.next;
             }
-            return 0;
+
+            return total;
         }
 
         public static class Node {
