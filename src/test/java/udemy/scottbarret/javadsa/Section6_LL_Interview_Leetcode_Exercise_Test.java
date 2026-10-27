@@ -133,7 +133,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
     @DisplayName("Binary to Decimal")
     @ParameterizedTest(name = "{0} ==> {1}")
     @MethodSource("argSource_binaryLinkedList")
-    void testBinaryToDecimal(Section5_LinkedList_Coding_Exercises.LinkedList sut, int expected) {
+    void testBinaryToDecimal(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int expected) {
         // ARRANGE - ACT - ASSERT
         assertEquals(expected, sut.binaryToDecimal());
     }
@@ -147,12 +147,12 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         );
     }
 
-    private static Section5_LinkedList_Coding_Exercises.LinkedList createBinaryLinkedList(String binaryNumberInString) {
-        Section5_LinkedList_Coding_Exercises.LinkedList linkedList = null;
+    private static Section6_LL_Interview_Leetcode_Exercise.LinkedList createBinaryLinkedList(String binaryNumberInString) {
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList linkedList = null;
 
         for (int i = 0; i < binaryNumberInString.length(); i++) {
             if (linkedList == null) {
-                linkedList = new Section5_LinkedList_Coding_Exercises.LinkedList(binaryNumberInString.charAt(i) - '0');
+                linkedList = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(binaryNumberInString.charAt(i) - '0');
             } else {
                 linkedList.append(binaryNumberInString.charAt(i) - '0');
             }

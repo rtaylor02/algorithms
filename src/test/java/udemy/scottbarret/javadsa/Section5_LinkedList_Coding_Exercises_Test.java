@@ -2,14 +2,8 @@ package udemy.scottbarret.javadsa;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
 import java.util.List;
-import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class Section5_LinkedList_Coding_Exercises_Test {
@@ -17,7 +11,7 @@ class Section5_LinkedList_Coding_Exercises_Test {
     @DisplayName("Appending linked list from non-empty list")
     void testAppend() {
         // ARRANGE - ACT
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1);
+        var sut = new Section5_LinkedList_Coding_Exercises.LinkedList(1);
         sut.append(2);
         List<Integer> actual = sut.asList();
 
@@ -29,7 +23,7 @@ class Section5_LinkedList_Coding_Exercises_Test {
     @DisplayName("Appending linked list from empty list")
     void testAppendFromEmptyLinkedList() {
         // ARRANGE
-        Section6_LL_Interview_Leetcode_Exercise.LinkedList sut = new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1);
+        var sut = new Section5_LinkedList_Coding_Exercises.LinkedList(1);
         sut.makeEmpty();
 
         // ACT
