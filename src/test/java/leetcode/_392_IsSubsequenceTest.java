@@ -32,7 +32,7 @@ public class _392_IsSubsequenceTest {
     @CsvSource({"abc, ahbgdc, true", "axc, ahbgdc, false", "ach, ahbgdc, false", "hcd, ahbgdc, false", "brd, birdy, true"})
     void testIsAnagram(String word1, String word2, boolean expected) {
         // ARRANGE - ACT
-        boolean actual = sut.isSubsequence(word1, word2);
+        boolean actual = sut.isSubsequence2(word1, word2);
 
         // ASSERT
         assertEquals(expected, actual);

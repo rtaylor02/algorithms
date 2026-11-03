@@ -2,15 +2,15 @@ package leetcode;
 
 public class _392_IsSubsequence {
     /*
-    Use 2 pointers to traverse word1 and word2 respectively. If the characters pointed by the pointers are the same,
-    move both pointers; if not, move only word2 pointers. This enforces sequential search within word2. Only when
-    word1 pointer reaches the length + 1 iteration, then we know word2 contains word1 as its subsequence.
+    Use 2 pointers to traverse s and t respectively. If the characters pointed by the pointers are the same,
+    move both pointers; if not, move only t pointers. This enforces sequential search within t. Only when
+    s pointer reaches the length + 1 iteration, then we know t contains s as its subsequence.
      */
-    public boolean isSubsequence(String word1, String word2) {
+    public boolean isSubsequence(String s, String t) {
         int pointer1 = 0, pointer2 = 0;
 
-        while ((pointer1 < word1.length()) && (pointer2 < word2.length())) {
-            if (word1.charAt(pointer1) == word2.charAt(pointer2)) {
+        while ((pointer1 < s.length()) && (pointer2 < t.length())) {
+            if (s.charAt(pointer1) == t.charAt(pointer2)) {
                 pointer1++;
                 pointer2++;
             } else {
@@ -18,6 +18,20 @@ public class _392_IsSubsequence {
             }
         }
 
-        return pointer1 == word1.length();
+        return pointer1 == s.length();
+    }
+
+    // This is the best performing algorithm from LeetCode
+    public boolean isSubsequence2(String s, String t) {
+        for (int i = 0; i < s.length(); i++) {
+            if (!t.contains(Character.toString(s.charAt(i)))) {
+                return false;
+            }
+
+            int found = t.indexOf(s.charAt(i));
+            t = t.substring(found + 1);
+        }
+
+        return true;
     }
 }
