@@ -183,5 +183,28 @@ public class Section5_LinkedList_Coding_Exercises {
 
             return false;
         }
+
+        @Override
+        public boolean equals(Object object) {
+            if (object instanceof LinkedList other) {
+                Node pointer1 = this.head;
+                Node pointer2 = other.head;
+                while (pointer1 != null && pointer2 != null) {
+                    if (pointer1.value != pointer2.value) {
+                        return false;
+                    } else {
+                        pointer1 = pointer1.next;
+                        pointer2 = pointer2.next;
+                    }
+                }
+                // Both LinkedList should be currently null
+                if (pointer1 != null | pointer2 != null) {
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
+        }
     }
 }

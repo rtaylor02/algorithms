@@ -14,7 +14,7 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
     @DisplayName("Find middle node")
     @ParameterizedTest
     @MethodSource("argSource_findMiddleNode")
-    //@CsvSource({"7, 4", "4, 3"})
+        //@CsvSource({"7, 4", "4, 3"})
     void testFindMiddleNode(Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, int expected) {
         // ARRANGE - ACT
         Section6_LL_Interview_Leetcode_Exercise.LinkedList.Node middleNode = sut.findMiddleNode();
@@ -159,5 +159,22 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
         }
 
         return linkedList;
+    }
+
+    @DisplayName("LinkedList equality test")
+    @ParameterizedTest(name = "{0} equals to {1}: {2}")
+    @MethodSource("argSource_linkedListEquals")
+    void testLinkedListEquals(Section6_LL_Interview_Leetcode_Exercise.LinkedList linkedList1, Section6_LL_Interview_Leetcode_Exercise.LinkedList linkedList2, boolean expected) {
+        assertEquals(linkedList1.equals(linkedList2), expected);
+    }
+
+    private static Stream<Arguments> argSource_linkedListEquals() {
+        return Stream.of(
+                Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), true),
+                Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2), false),
+                Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), null, false),
+                Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), false),
+                Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 1, 3), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), false)
+        );
     }
 }
