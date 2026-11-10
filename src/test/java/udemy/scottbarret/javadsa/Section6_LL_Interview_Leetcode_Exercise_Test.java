@@ -177,4 +177,26 @@ class Section6_LL_Interview_Leetcode_Exercise_Test {
                 Arguments.of(new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 1, 3), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 2, 3), false)
         );
     }
+
+    @DisplayName("Partition List")
+    @ParameterizedTest(name = "Partition value of {0}: {1} ==> {2} ")
+    @MethodSource("argSource_partitionList")
+    void testPartitionList(int partitionValue, Section6_LL_Interview_Leetcode_Exercise.LinkedList sut, Section6_LL_Interview_Leetcode_Exercise.LinkedList expected) {
+        // ARRANGE - ACT
+        Section6_LL_Interview_Leetcode_Exercise.LinkedList result = sut.partitionList(partitionValue);
+
+        // ASSERT
+        assertEquals(result, expected);
+    }
+
+    private static Stream<Arguments> argSource_partitionList() {
+        return Stream.of(
+                Arguments.of(5, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(3, 8, 5, 10, 2, 1), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(3, 2, 1, 8, 5, 10)),
+                Arguments.of(5, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 4, 3, 2, 5, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(1, 4, 3, 2, 2, 5)),
+                Arguments.of(4, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(5, 4, 3, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(3, 2, 5, 4)),
+                Arguments.of(2, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(5, 4, 3, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(5, 4, 3, 2)),
+                Arguments.of(5, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(5, 4, 3, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(4, 3, 2, 5)),
+                Arguments.of(3, new Section6_LL_Interview_Leetcode_Exercise.LinkedList(5, 4, 3, 2), new Section6_LL_Interview_Leetcode_Exercise.LinkedList(2, 5, 4, 3))
+        );
+    }
 }

@@ -26,6 +26,10 @@ public class Section5_LinkedList_Coding_Exercises {
             return head;
         }
 
+        void setHead(Node node) {
+            this.head = node;
+        }
+
         public Node getTail() {
             return tail;
         }
@@ -166,6 +170,10 @@ public class Section5_LinkedList_Coding_Exercises {
 
             void setNext(Node next) {
                 this.next = next;
+            }
+
+            Node getNext() {
+                return next;
             }
         }
 
