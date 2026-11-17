@@ -29,6 +29,7 @@ public class _56_MergeIntervalsTest {
                 Arguments.of(new int[][]{{1, 4}, {4, 5}}, new int[][]{{1, 5}}),
                 Arguments.of(new int[][]{{1, 4}, {2, 3}}, new int[][]{{1, 4}}),
                 Arguments.of(new int[][]{{4, 7}, {1, 4}}, new int[][]{{1, 7}}), // Edge case: unsorted initial interval
+                Arguments.of(new int[][]{{9, 11}, {4, 7}, {8, 10}, {1, 4}}, new int[][]{{1, 7}, {8, 11}}), // Edge case: unsorted initial interval with 2 separate intervals
                 Arguments.of(new int[][]{{1, 4}, {5, 6}}, new int[][]{{1, 4}, {5, 6}}) // Edge case: no merge
         );
     }
